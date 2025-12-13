@@ -21,4 +21,5 @@ public:
 private:
     QString id; //加前缀str便于区分，每个伞的id都必须是唯一的
     GearType type; //雨具类型
+    bool broken_flag = false; //是否损坏，默认为false
 };
