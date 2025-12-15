@@ -18,6 +18,7 @@ public:
     explicit SlotItem(int index, QWidget *parent = nullptr);
     void setState(State state);
     void setIcon(const QPixmap &pixmap, const QString &descText);
+    void setGearTypeName(const QString &typeName); // 设置雨具类型名称
     State state() const { return m_state; }
 
 signals:
@@ -32,6 +33,7 @@ private:
     int m_index;
     State m_state { State::Available };
     QLabel *m_iconLabel;
-    QLabel *m_label;
+    QLabel *m_label;           // 显示槽位编号和类型名称
+    QLabel *m_statusIndicator; // 状态指示器（颜色条）
 };
 
