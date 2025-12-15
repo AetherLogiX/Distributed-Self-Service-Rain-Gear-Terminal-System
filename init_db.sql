@@ -1,7 +1,7 @@
 -- RainHub 校园智能共享雨具终端系统
 -- 数据库初始化脚本 (MySQL 8.0)
 
--- 创建数据库（如果不存在）
+-- 创建数据库
 CREATE DATABASE IF NOT EXISTS rainhub_db 
     CHARACTER SET utf8mb4 
     COLLATE utf8mb4_unicode_ci;
@@ -12,7 +12,7 @@ USE rainhub_db;
 -- 1用户信息表 (users)
 CREATE TABLE IF NOT EXISTS users (
     user_id VARCHAR(20) NOT NULL COMMENT '学号/工号',
-    password VARCHAR(20) NULL COMMENT '登录密码 (首次登录为NULL，需要激活设置密码)',
+    password VARCHAR(64) NULL COMMENT '登录密码 (首次登录为NULL，需要激活设置密码)',
     real_name VARCHAR(20) NOT NULL COMMENT '真实姓名',
     role INT NOT NULL DEFAULT 0 COMMENT '角色标识 (0:学生, 1:教职工, 9:管理员)',
     credit DECIMAL(10, 2) NOT NULL DEFAULT 0.00 COMMENT '账户余额 (单位: 元)',

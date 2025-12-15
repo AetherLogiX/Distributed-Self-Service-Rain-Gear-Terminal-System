@@ -1,0 +1,1 @@
+DROP DATABASE IF EXISTS rainhub_db; 
