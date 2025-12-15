@@ -1,7 +1,6 @@
 #include "User.h"
 
-// 构造函数实现
-// 使用 std::move 优化字符串拷贝
+// 构造函数使用 std::move 优化字符串拷贝
 User::User(QString id, QString name, double credit, int role):id(std::move(id)),name(std::move(name)),credit(credit),role(role){}
 
 // Getters 实现
