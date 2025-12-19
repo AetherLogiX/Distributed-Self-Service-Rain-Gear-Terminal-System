@@ -86,11 +86,19 @@ RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp: E:/Qt/6.9.3/mingw_64/bin/rcc.exe
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic RCC for rgear_icons/icons.qrc"
 	E:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc C:/Users/hdcqW/Desktop/Rainhub/build/CMakeFiles/RainHub_autogen.dir/AutoRcc_icons_LFMT4ZCNZA_Info.json 
 
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp: C:/Users/hdcqW/Desktop/Rainhub/map_resources/map.qrc
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp: CMakeFiles/RainHub_autogen.dir/AutoRcc_map_UQEM7VAMAL_Info.json
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp: C:/Users/hdcqW/Desktop/Rainhub/map_resources/map_config.json
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp: E:/Qt/6.9.3/mingw_64/bin/rcc.exe
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp: E:/Qt/6.9.3/mingw_64/bin/rcc.exe
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Automatic RCC for map_resources/map.qrc"
+	E:\Qt\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc C:/Users/hdcqW/Desktop/Rainhub/build/CMakeFiles/RainHub_autogen.dir/AutoRcc_map_UQEM7VAMAL_Info.json 
+
 CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj: CMakeFiles/RainHub.dir/flags.make
 CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj: RainHub_autogen/mocs_compilation.cpp
 CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\RainHub.dir\RainHub_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\RainHub.dir\RainHub_autogen\mocs_compilation.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\build\RainHub_autogen\mocs_compilation.cpp
 
 CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.i: cmake_force
@@ -105,7 +113,7 @@ CMakeFiles/RainHub.dir/client/main.cpp.obj: CMakeFiles/RainHub.dir/flags.make
 CMakeFiles/RainHub.dir/client/main.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/client/main.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/client/main.cpp
 CMakeFiles/RainHub.dir/client/main.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/RainHub.dir/client/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RainHub.dir/client/main.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/client/main.cpp.obj -MF CMakeFiles\RainHub.dir\client\main.cpp.obj.d -o CMakeFiles\RainHub.dir\client\main.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\client\main.cpp
 
 CMakeFiles/RainHub.dir/client/main.cpp.i: cmake_force
@@ -120,7 +128,7 @@ CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj: CMakeFiles/RainHub.dir/flags.m
 CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/client/MainWindow.cpp
 CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/client/MainWindow.cpp.obj -MF CMakeFiles\RainHub.dir\client\MainWindow.cpp.obj.d -o CMakeFiles\RainHub.dir\client\MainWindow.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\client\MainWindow.cpp
 
 CMakeFiles/RainHub.dir/client/MainWindow.cpp.i: cmake_force
@@ -135,7 +143,7 @@ CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj: CMakeFiles/RainHub.dir/flags.mak
 CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/client/SlotItem.cpp
 CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj -MF CMakeFiles\RainHub.dir\client\SlotItem.cpp.obj.d -o CMakeFiles\RainHub.dir\client\SlotItem.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\client\SlotItem.cpp
 
 CMakeFiles/RainHub.dir/client/SlotItem.cpp.i: cmake_force
@@ -150,7 +158,7 @@ CMakeFiles/RainHub.dir/Model/User.cpp.obj: CMakeFiles/RainHub.dir/flags.make
 CMakeFiles/RainHub.dir/Model/User.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/Model/User.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/Model/User.cpp
 CMakeFiles/RainHub.dir/Model/User.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/RainHub.dir/Model/User.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/RainHub.dir/Model/User.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/Model/User.cpp.obj -MF CMakeFiles\RainHub.dir\Model\User.cpp.obj.d -o CMakeFiles\RainHub.dir\Model\User.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\Model\User.cpp
 
 CMakeFiles/RainHub.dir/Model/User.cpp.i: cmake_force
@@ -165,7 +173,7 @@ CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj: CMakeFiles/RainHub.dir/flags.
 CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/Model/Stationlocal.cpp
 CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj -MF CMakeFiles\RainHub.dir\Model\Stationlocal.cpp.obj.d -o CMakeFiles\RainHub.dir\Model\Stationlocal.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\Model\Stationlocal.cpp
 
 CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.i: cmake_force
@@ -180,7 +188,7 @@ CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj: CMakeFiles/RainHub.dir/flags.
 CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/Model/StationUtils.cpp
 CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj -MF CMakeFiles\RainHub.dir\Model\StationUtils.cpp.obj.d -o CMakeFiles\RainHub.dir\Model\StationUtils.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\Model\StationUtils.cpp
 
 CMakeFiles/RainHub.dir/Model/StationUtils.cpp.i: cmake_force
@@ -195,7 +203,7 @@ CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj: CMakeFiles/RainHub.dir/flag
 CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/Control/SystemManger.cpp
 CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj -MF CMakeFiles\RainHub.dir\Control\SystemManger.cpp.obj.d -o CMakeFiles\RainHub.dir\Control\SystemManger.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\Control\SystemManger.cpp
 
 CMakeFiles/RainHub.dir/Control/SystemManger.cpp.i: cmake_force
@@ -210,7 +218,7 @@ CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj: CMakeFiles/RainHub.dir/f
 CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj: C:/Users/hdcqW/Desktop/Rainhub/Control/DatabaseManager.cpp
 CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj -MF CMakeFiles\RainHub.dir\Control\DatabaseManager.cpp.obj.d -o CMakeFiles\RainHub.dir\Control\DatabaseManager.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\Control\DatabaseManager.cpp
 
 CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.i: cmake_force
@@ -225,7 +233,7 @@ CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj: CMakeFiles/
 CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
 CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj: RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp
 CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj -MF CMakeFiles\RainHub.dir\RainHub_autogen\LFMT4ZCNZA\qrc_icons.cpp.obj.d -o CMakeFiles\RainHub.dir\RainHub_autogen\LFMT4ZCNZA\qrc_icons.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\build\RainHub_autogen\LFMT4ZCNZA\qrc_icons.cpp
 
 CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.i: cmake_force
@@ -235,6 +243,21 @@ CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.i: cmake_force
 CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.s"
 	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\hdcqW\Desktop\Rainhub\build\RainHub_autogen\LFMT4ZCNZA\qrc_icons.cpp -o CMakeFiles\RainHub.dir\RainHub_autogen\LFMT4ZCNZA\qrc_icons.cpp.s
+
+CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj: CMakeFiles/RainHub.dir/flags.make
+CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj: CMakeFiles/RainHub.dir/includes_CXX.rsp
+CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj: RainHub_autogen/UQEM7VAMAL/qrc_map.cpp
+CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj: CMakeFiles/RainHub.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj -MF CMakeFiles\RainHub.dir\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp.obj.d -o CMakeFiles\RainHub.dir\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp.obj -c C:\Users\hdcqW\Desktop\Rainhub\build\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp
+
+CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.i"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\hdcqW\Desktop\Rainhub\build\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp > CMakeFiles\RainHub.dir\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp.i
+
+CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.s"
+	C:\msys64\ucrt64\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\hdcqW\Desktop\Rainhub\build\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp -o CMakeFiles\RainHub.dir\RainHub_autogen\UQEM7VAMAL\qrc_map.cpp.s
 
 # Object files for target RainHub
 RainHub_OBJECTS = \
@@ -247,7 +270,8 @@ RainHub_OBJECTS = \
 "CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj" \
 "CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj" \
 "CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj" \
-"CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj"
+"CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj" \
+"CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj"
 
 # External object files for target RainHub
 RainHub_EXTERNAL_OBJECTS =
@@ -262,6 +286,7 @@ bin/RainHub.exe: CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj
 bin/RainHub.exe: CMakeFiles/RainHub.dir/Control/SystemManger.cpp.obj
 bin/RainHub.exe: CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj
 bin/RainHub.exe: CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj
+bin/RainHub.exe: CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj
 bin/RainHub.exe: CMakeFiles/RainHub.dir/build.make
 bin/RainHub.exe: E:/Qt/6.9.3/mingw_64/lib/libQt6Widgets.a
 bin/RainHub.exe: E:/Qt/6.9.3/mingw_64/lib/libQt6Sql.a
@@ -271,7 +296,7 @@ bin/RainHub.exe: E:/Qt/6.9.3/mingw_64/lib/libQt6Core.a
 bin/RainHub.exe: CMakeFiles/RainHub.dir/linkLibs.rsp
 bin/RainHub.exe: CMakeFiles/RainHub.dir/objects1.rsp
 bin/RainHub.exe: CMakeFiles/RainHub.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable bin\RainHub.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable bin\RainHub.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\RainHub.dir\link.txt --verbose=$(VERBOSE)
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold "复制MySQL DLL到输出目录"
 	E:\Qt\Tools\CMake_64\bin\cmake.exe -E copy_if_different "C:/Program Files/MySQL/MySQL Server 8.0/lib/libmysql.dll" C:/Users/hdcqW/Desktop/Rainhub/build/bin
@@ -315,6 +340,7 @@ CMakeFiles/RainHub.dir/clean:
 .PHONY : CMakeFiles/RainHub.dir/clean
 
 CMakeFiles/RainHub.dir/depend: RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp
+CMakeFiles/RainHub.dir/depend: RainHub_autogen/UQEM7VAMAL/qrc_map.cpp
 CMakeFiles/RainHub.dir/depend: RainHub_autogen/timestamp
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\hdcqW\Desktop\Rainhub C:\Users\hdcqW\Desktop\Rainhub C:\Users\hdcqW\Desktop\Rainhub\build C:\Users\hdcqW\Desktop\Rainhub\build C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles\RainHub.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/RainHub.dir/depend

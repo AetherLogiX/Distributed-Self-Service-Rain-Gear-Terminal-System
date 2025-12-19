@@ -63,6 +63,7 @@ set(HEADERS
 # 资源文件
 set(RESOURCES
     rgear_icons/icons.qrc
+    map_resources/map.qrc
 )
 
 # 创建可执行文件

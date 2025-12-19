@@ -79,16 +79,16 @@ clean: CMakeFiles/RainHub_autogen.dir/clean
 # Target rules for target CMakeFiles/RainHub.dir
 
 # All Build rule for target.
-CMakeFiles/RainHub.dir/all: CMakeFiles/RainHub_autogen_timestamp_deps.dir/all
 CMakeFiles/RainHub.dir/all: CMakeFiles/RainHub_autogen.dir/all
+CMakeFiles/RainHub.dir/all: CMakeFiles/RainHub_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13 "Built target RainHub"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15 "Built target RainHub"
 .PHONY : CMakeFiles/RainHub.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/RainHub.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles 16
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/RainHub.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles 0
 .PHONY : CMakeFiles/RainHub.dir/rule
@@ -135,7 +135,7 @@ CMakeFiles/RainHub_autogen_timestamp_deps.dir/clean:
 CMakeFiles/RainHub_autogen.dir/all: CMakeFiles/RainHub_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_autogen.dir\build.make CMakeFiles/RainHub_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_autogen.dir\build.make CMakeFiles/RainHub_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=14 "Built target RainHub_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\hdcqW\Desktop\Rainhub\build\CMakeFiles --progress-num=16 "Built target RainHub_autogen"
 .PHONY : CMakeFiles/RainHub_autogen.dir/all
 
 # Build rule for subdir invocation for target.

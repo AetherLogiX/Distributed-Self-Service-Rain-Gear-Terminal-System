@@ -4,6 +4,8 @@
 #include <QVBoxLayout>
 #include <QMouseEvent>
 #include <QPixmap>
+#include <QApplication>
+#include <QStyle>
 
 SlotItem::SlotItem(int index, QWidget *parent)
     : QWidget(parent)
@@ -121,6 +123,10 @@ void SlotItem::refreshStyle()
         "max-height: 12px; "
         "}").arg(indicatorColor));
     
+    // 先清除旧样式，再设置新样式，确保样式立即生效
+    setStyleSheet("");
+    QApplication::processEvents();
+    
     // 设置整体边框颜色
     setStyleSheet(QStringLiteral(
         "SlotItem { "
@@ -129,7 +135,9 @@ void SlotItem::refreshStyle()
         "border: 2px solid %1; "
         "}").arg(borderColor));
     
-    // 强制刷新样式
+    // 强制刷新样式和布局
+    style()->unpolish(this);
+    style()->polish(this);
     update();
     repaint();
 }

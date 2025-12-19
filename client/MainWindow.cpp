@@ -729,12 +729,15 @@ QWidget* MainWindow::createMapPage()
     topBar->addStretch();
     topBar->addWidget(btnBack);
 
-    // 地图容器（使用QWidget作为画布）
+    // 地图容器（使用QWidget作为画布，不使用真实地图图片）
     auto *mapContainer = new QWidget(page);
     mapContainer->setMinimumSize(800, 600);
-    mapContainer->setStyleSheet("background-color: #ecf0f1; border: 2px solid #bdc3c7; border-radius: 8px;");
+    mapContainer->setStyleSheet(
+        "background-color: #ecf0f1; "
+        "border: 2px solid #bdc3c7; "
+        "border-radius: 8px;");
     
-    // 加载站点数据并绘制
+    // 从数据库加载站点数据并绘制
     loadMapStations(mapContainer);
 
     layout->addLayout(topBar);
@@ -1207,8 +1210,10 @@ void MainWindow::handleBorrowGear(int slotId, int slotIndex)
     
     // 强制刷新UI，确保样式立即更新
     for (auto *slot : m_slots) {
-        slot->repaint();
+        slot->style()->unpolish(slot);
+        slot->style()->polish(slot);
         slot->update();
+        slot->repaint();
     }
     QApplication::processEvents(); // 处理事件循环，确保UI立即更新
     
@@ -1219,49 +1224,53 @@ void MainWindow::loadMapStations(QWidget *mapContainer)
 {
     if (!mapContainer) return;
     
-    // 从JSON配置文件读取站点坐标
-    QFile configFile("map_resources/map_config.json");
-    if (!configFile.open(QIODevice::ReadOnly)) {
-        qWarning() << "[MainWindow] 无法打开地图配置文件";
+    if (!DatabaseManager::init()) {
+        qWarning() << "[MainWindow] 数据库连接失败，无法加载站点";
         return;
     }
     
-    QByteArray data = configFile.readAll();
-    configFile.close();
+    // 从数据库查询所有站点（包含坐标信息）
+    auto allStations = DatabaseManager::fetchAllStations();
     
-    QJsonDocument doc = QJsonDocument::fromJson(data);
-    if (doc.isNull() || !doc.isObject()) {
-        qWarning() << "[MainWindow] 地图配置文件格式错误";
-        return;
-    }
-    
-    QJsonObject config = doc.object();
-    QJsonArray stations = config["stations"].toArray();
-    
-    // 从数据库查询所有站点的库存信息
+    // 查询所有站点的库存信息
     QMap<int, int> stationInventory; // station_id -> 可借雨具数量
-    if (DatabaseManager::init()) {
-        auto allStations = DatabaseManager::fetchAllStations();
-        for (const auto &station : allStations) {
-            auto gears = DatabaseManager::fetchGearsByStation(station.stationId);
-            int availableCount = 0;
-            for (const auto &gear : gears) {
-                if (gear.status == 1) { // 可借状态
-                    availableCount++;
-                }
+    for (const auto &station : allStations) {
+        auto gears = DatabaseManager::fetchGearsByStation(station.stationId);
+        int availableCount = 0;
+        for (const auto &gear : gears) {
+            if (gear.status == 1) { // 可借状态
+                availableCount++;
             }
-            stationInventory[station.stationId] = availableCount;
+        }
+        stationInventory[station.stationId] = availableCount;
+    }
+    
+    // 从JSON配置文件读取站点描述信息（可选，用于显示更详细的站点说明）
+    QMap<int, QString> stationDescriptions;
+    QFile configFile("map_resources/map_config.json");
+    if (configFile.open(QIODevice::ReadOnly)) {
+        QByteArray data = configFile.readAll();
+        configFile.close();
+        QJsonDocument doc = QJsonDocument::fromJson(data);
+        if (!doc.isNull() && doc.isObject()) {
+            QJsonObject config = doc.object();
+            QJsonArray stations = config["stations"].toArray();
+            for (const QJsonValue &value : stations) {
+                QJsonObject stationObj = value.toObject();
+                int stationId = stationObj["station_id"].toInt();
+                QString description = stationObj["description"].toString();
+                stationDescriptions[stationId] = description;
+            }
         }
     }
     
-    // 绘制站点
-    for (const QJsonValue &value : stations) {
-        QJsonObject stationObj = value.toObject();
-        int stationId = stationObj["station_id"].toInt();
-        QString name = stationObj["name"].toString();
-        double posX = stationObj["pos_x"].toDouble();
-        double posY = stationObj["pos_y"].toDouble();
-        QString description = stationObj["description"].toString();
+    // 根据数据库中的坐标绘制站点
+    for (const auto &station : allStations) {
+        int stationId = station.stationId;
+        QString name = station.name;
+        double posX = station.posX;  // 从数据库读取的坐标
+        double posY = station.posY;  // 从数据库读取的坐标
+        QString description = stationDescriptions.value(stationId, tr("雨具借还站点"));
         
         // 创建站点按钮
         auto *stationBtn = new QPushButton(mapContainer);
@@ -1323,6 +1332,8 @@ void MainWindow::loadMapStations(QWidget *mapContainer)
             nameLabel->move(x - nameLabel->width() / 2 + 12, y + 28); // 放在按钮下方
         });
     }
+    
+    qDebug() << "[MainWindow] 已从数据库加载" << allStations.size() << "个站点并绘制到地图";
 }
 
 void MainWindow::handleReturnGear(int slotId, int slotIndex)
@@ -1395,8 +1406,10 @@ void MainWindow::handleReturnGear(int slotId, int slotIndex)
     
     // 强制刷新UI，确保样式立即更新
     for (auto *slot : m_slots) {
-        slot->repaint();
+        slot->style()->unpolish(slot);
+        slot->style()->polish(slot);
         slot->update();
+        slot->repaint();
     }
     QApplication::processEvents(); // 处理事件循环，确保UI立即更新
     

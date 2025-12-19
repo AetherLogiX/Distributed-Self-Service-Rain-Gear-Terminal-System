@@ -91,7 +91,7 @@ private:
     void loadStations();                      // 加载站点列表
     void onStationChanged(int index);        // 站点选择改变时的处理
     void refreshSlotsFromDatabase();         // 从数据库刷新槽位状态
-    void loadMapStations(QWidget *mapContainer); // 加载地图站点并绘制
+    void loadMapStations(QWidget *mapContainer); // 从数据库加载站点坐标并绘制
 
     // Profile mock labels
     QLabel *m_profileName { nullptr };

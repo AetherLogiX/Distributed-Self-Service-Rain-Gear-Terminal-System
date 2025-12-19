@@ -428,4 +428,8 @@ CMakeFiles/RainHub.dir/client/SlotItem.cpp.obj: \
  E:/Qt/6.9.3/mingw_64/include/QtCore/qcoreapplication_platform.h \
  E:/Qt/6.9.3/mingw_64/include/QtGui/qinputmethod.h \
  E:/Qt/6.9.3/mingw_64/include/QtCore/qlocale.h \
- E:/Qt/6.9.3/mingw_64/include/QtGui/qguiapplication_platform.h
+ E:/Qt/6.9.3/mingw_64/include/QtGui/qguiapplication_platform.h \
+ E:/Qt/6.9.3/mingw_64/include/QtWidgets/QApplication \
+ E:/Qt/6.9.3/mingw_64/include/QtWidgets/qapplication.h \
+ E:/Qt/6.9.3/mingw_64/include/QtWidgets/QStyle \
+ E:/Qt/6.9.3/mingw_64/include/QtWidgets/qstyle.h

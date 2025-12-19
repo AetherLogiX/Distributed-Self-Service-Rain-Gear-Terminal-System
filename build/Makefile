@@ -298,6 +298,30 @@ RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.s
 .PHONY : RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.s
 
+RainHub_autogen/UQEM7VAMAL/qrc_map.obj: RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj
+.PHONY : RainHub_autogen/UQEM7VAMAL/qrc_map.obj
+
+# target to build an object file
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj
+.PHONY : RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.obj
+
+RainHub_autogen/UQEM7VAMAL/qrc_map.i: RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.i
+.PHONY : RainHub_autogen/UQEM7VAMAL/qrc_map.i
+
+# target to preprocess a source file
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.i
+.PHONY : RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.i
+
+RainHub_autogen/UQEM7VAMAL/qrc_map.s: RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.s
+.PHONY : RainHub_autogen/UQEM7VAMAL/qrc_map.s
+
+# target to generate assembly for a file
+RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.s
+.PHONY : RainHub_autogen/UQEM7VAMAL/qrc_map.cpp.s
+
 RainHub_autogen/mocs_compilation.obj: RainHub_autogen/mocs_compilation.cpp.obj
 .PHONY : RainHub_autogen/mocs_compilation.obj
 
@@ -423,6 +447,9 @@ help:
 	@echo ... RainHub_autogen/LFMT4ZCNZA/qrc_icons.obj
 	@echo ... RainHub_autogen/LFMT4ZCNZA/qrc_icons.i
 	@echo ... RainHub_autogen/LFMT4ZCNZA/qrc_icons.s
+	@echo ... RainHub_autogen/UQEM7VAMAL/qrc_map.obj
+	@echo ... RainHub_autogen/UQEM7VAMAL/qrc_map.i
+	@echo ... RainHub_autogen/UQEM7VAMAL/qrc_map.s
 	@echo ... RainHub_autogen/mocs_compilation.obj
 	@echo ... RainHub_autogen/mocs_compilation.i
 	@echo ... RainHub_autogen/mocs_compilation.s
