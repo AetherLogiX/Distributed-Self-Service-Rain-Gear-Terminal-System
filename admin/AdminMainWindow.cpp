@@ -56,7 +56,6 @@ void AdminMainWindow::setupUi()
     m_stack->addWidget(createGearManagePage());    // 2 GearManage
     m_stack->addWidget(createUserManagePage());    // 3 UserManage
     m_stack->addWidget(createOrderManagePage());   // 4 OrderManage
-    m_stack->addWidget(createSystemSettingsPage()); // 5 SystemSettings
 
     layout->addWidget(m_stack);
     setCentralWidget(central);
@@ -143,6 +142,11 @@ bool AdminMainWindow::performAdminLogin(const QString &userId, const QString &pa
     m_currentAdminId = record->userId;
     m_currentAdminName = record->realName;
     
+    // 更新管理员信息标签
+    if (m_adminLabel) {
+        m_adminLabel->setText(tr("管理员：%1").arg(m_currentAdminId));
+    }
+    
     QMessageBox::information(this, tr("登录成功"), tr("欢迎，%1").arg(m_currentAdminName));
     return true;
 }
@@ -188,14 +192,10 @@ QWidget* AdminMainWindow::createDashboardPage()
     m_navOrderManage = new QPushButton(tr("📋 订单/流水"), sidebar);
     connect(m_navOrderManage, &QPushButton::clicked, this, [this] { switchPage(Page::OrderManage); });
     
-    m_navSystemSettings = new QPushButton(tr("⚙️ 系统设置"), sidebar);
-    connect(m_navSystemSettings, &QPushButton::clicked, this, [this] { switchPage(Page::SystemSettings); });
-    
     sidebarLayout->addWidget(btnDashboard);
     sidebarLayout->addWidget(m_navGearManage);
     sidebarLayout->addWidget(m_navUserManage);
     sidebarLayout->addWidget(m_navOrderManage);
-    sidebarLayout->addWidget(m_navSystemSettings);
     sidebarLayout->addStretch();
     
     // 右侧主内容区
@@ -212,14 +212,21 @@ QWidget* AdminMainWindow::createDashboardPage()
     m_weatherLabel = new QLabel(getWeatherInfo(), contentArea);
     m_weatherLabel->setStyleSheet("font-size:14px; color: #7f8c8d; padding: 8px 16px; background-color: #ecf0f1; border-radius: 4px;");
     
-    auto *adminLabel = new QLabel(tr("管理员：%1").arg(m_currentAdminName), contentArea);
-    adminLabel->setStyleSheet("font-size:14px; color: #e74c3c; font-weight:600;");
+    m_adminLabel = new QLabel(tr("管理员："), contentArea);
+    m_adminLabel->setStyleSheet("font-size:14px; color: #e74c3c; font-weight:600;");
+    
+    auto *btnLogout = new QPushButton(tr("退出登录"), contentArea);
+    btnLogout->setFixedWidth(100);
+    btnLogout->setStyleSheet("font-size:12px; padding:6px 12px; background-color: #e74c3c; color: white; border-radius: 4px;");
+    connect(btnLogout, &QPushButton::clicked, this, &AdminMainWindow::handleLogout);
     
     topBar->addWidget(title);
     topBar->addStretch();
     topBar->addWidget(m_weatherLabel);
     topBar->addSpacing(10);
-    topBar->addWidget(adminLabel);
+    topBar->addWidget(m_adminLabel);
+    topBar->addSpacing(10);
+    topBar->addWidget(btnLogout);
     contentLayout->addLayout(topBar);
 
     // 统计信息栏
@@ -277,6 +284,12 @@ void AdminMainWindow::loadMapStations(QWidget *mapContainer)
 {
     if (!mapContainer) return;
     
+    // 清除旧的站点按钮和标签
+    QList<QWidget*> children = mapContainer->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly);
+    for (auto *child : children) {
+        child->deleteLater();
+    }
+    
     if (!DatabaseManager::init()) {
         qWarning() << "[Admin] 数据库连接失败，无法加载站点";
         return;
@@ -297,36 +310,39 @@ void AdminMainWindow::loadMapStations(QWidget *mapContainer)
         stationInventory[station.stationId] = availableCount;
     }
     
-    // 绘制站点
+    // 绘制站点（与客户端一致的布局）
     for (const auto &station : allStations) {
         int stationId = station.stationId;
         QString name = station.name;
-        double posX = station.posX;
-        double posY = station.posY;
+        double posX = station.posX;  // 从数据库读取的坐标
+        double posY = station.posY;  // 从数据库读取的坐标
         
-        // 创建站点按钮
+        // 创建站点按钮（与客户端一致，24x24大小）
         auto *stationBtn = new QPushButton(mapContainer);
-        stationBtn->setFixedSize(30, 30);
+        stationBtn->setFixedSize(24, 24);
         stationBtn->setCursor(Qt::PointingHandCursor);
         
+        // 根据库存数量设置颜色（与客户端一致）
         int availableCount = stationInventory.value(stationId, 0);
-        QString color = "#2ecc71"; // 默认绿色
-        if (availableCount < 2) {
-            color = "#e74c3c"; // 红色
-        } else if (availableCount < 5) {
-            color = "#f1c40f"; // 黄色
+        QString color;
+        if (availableCount >= 5) {
+            color = "#2ecc71"; // 绿色 - 库存充足
+        } else if (availableCount >= 2) {
+            color = "#f1c40f"; // 黄色 - 库存紧张
+        } else {
+            color = "#e74c3c"; // 红色 - 库存不足
         }
         
         stationBtn->setStyleSheet(QString(
             "QPushButton {"
             "  background-color: %1;"
             "  border: 2px solid white;"
-            "  border-radius: 15px;"
+            "  border-radius: 12px;"
             "}"
             "QPushButton:hover {"
             "  background-color: %1;"
             "  border: 3px solid #3498db;"
-            "  border-radius: 15px;"
+            "  border-radius: 12px;"
             "}"
         ).arg(color));
         
@@ -334,7 +350,7 @@ void AdminMainWindow::loadMapStations(QWidget *mapContainer)
         stationBtn->setToolTip(QString("%1\n可借雨具：%2 把").arg(name).arg(availableCount));
         
         // 点击站点显示详细信息
-        connect(stationBtn, &QPushButton::clicked, this, [this, stationId, name, availableCount]() {
+        connect(stationBtn, &QPushButton::clicked, this, [this, stationId]() {
             onStationClicked(stationId);
         });
         
@@ -344,18 +360,20 @@ void AdminMainWindow::loadMapStations(QWidget *mapContainer)
         nameLabel->setAlignment(Qt::AlignCenter);
         nameLabel->adjustSize();
         
-        // 延迟设置位置
+        // 使用定时器延迟设置位置（确保mapContainer已经完成布局，与客户端一致）
         QTimer::singleShot(100, this, [mapContainer, stationBtn, nameLabel, posX, posY]() {
             int containerWidth = mapContainer->width();
             int containerHeight = mapContainer->height();
             
-            int x = static_cast<int>(containerWidth * posX) - 15;
-            int y = static_cast<int>(containerHeight * posY) - 15;
+            int x = static_cast<int>(containerWidth * posX) - 12; // 减去按钮半径（与客户端一致）
+            int y = static_cast<int>(containerHeight * posY) - 12;
             
             stationBtn->move(x, y);
-            nameLabel->move(x - nameLabel->width() / 2 + 15, y + 32);
+            nameLabel->move(x - nameLabel->width() / 2 + 12, y + 28); // 放在按钮下方
         });
     }
+    
+    qDebug() << "[Admin] 已从数据库加载" << allStations.size() << "个站点并绘制到地图";
 }
 
 void AdminMainWindow::onStationClicked(int stationId)
@@ -463,7 +481,6 @@ void AdminMainWindow::switchPage(Page page)
     if (m_navGearManage) m_navGearManage->setStyleSheet(normalStyle);
     if (m_navUserManage) m_navUserManage->setStyleSheet(normalStyle);
     if (m_navOrderManage) m_navOrderManage->setStyleSheet(normalStyle);
-    if (m_navSystemSettings) m_navSystemSettings->setStyleSheet(normalStyle);
     
     switch (page) {
         case Page::GearManage:
@@ -478,15 +495,20 @@ void AdminMainWindow::switchPage(Page page)
             if (m_navOrderManage) m_navOrderManage->setStyleSheet(selectedStyle);
             refreshOrderManageData();
             break;
-        case Page::SystemSettings:
-            if (m_navSystemSettings) m_navSystemSettings->setStyleSheet(selectedStyle);
-            break;
         case Page::Dashboard:
             refreshDashboardData();
             break;
         default:
             break;
     }
+}
+
+void AdminMainWindow::handleLogout()
+{
+    m_refreshTimer->stop();
+    m_currentAdminId.clear();
+    m_currentAdminName.clear();
+    switchPage(Page::Login);
 }
 
 QWidget* AdminMainWindow::createGearManagePage()
@@ -520,15 +542,10 @@ QWidget* AdminMainWindow::createGearManagePage()
     m_navOrderManage->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
     connect(m_navOrderManage, &QPushButton::clicked, this, [this] { switchPage(Page::OrderManage); });
     
-    m_navSystemSettings = new QPushButton(tr("⚙️ 系统设置"), sidebar);
-    m_navSystemSettings->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navSystemSettings, &QPushButton::clicked, this, [this] { switchPage(Page::SystemSettings); });
-    
     sidebarLayout->addWidget(btnDashboard);
     sidebarLayout->addWidget(m_navGearManage);
     sidebarLayout->addWidget(m_navUserManage);
     sidebarLayout->addWidget(m_navOrderManage);
-    sidebarLayout->addWidget(m_navSystemSettings);
     sidebarLayout->addStretch();
 
     // 右侧内容区
@@ -725,15 +742,10 @@ QWidget* AdminMainWindow::createUserManagePage()
     m_navOrderManage->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
     connect(m_navOrderManage, &QPushButton::clicked, this, [this] { switchPage(Page::OrderManage); });
     
-    m_navSystemSettings = new QPushButton(tr("⚙️ 系统设置"), sidebar);
-    m_navSystemSettings->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navSystemSettings, &QPushButton::clicked, this, [this] { switchPage(Page::SystemSettings); });
-    
     sidebarLayout->addWidget(btnDashboard);
     sidebarLayout->addWidget(m_navGearManage);
     sidebarLayout->addWidget(m_navUserManage);
     sidebarLayout->addWidget(m_navOrderManage);
-    sidebarLayout->addWidget(m_navSystemSettings);
     sidebarLayout->addStretch();
 
     // 右侧内容区
@@ -883,15 +895,10 @@ QWidget* AdminMainWindow::createOrderManagePage()
     m_navOrderManage->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: #2c3e50; } QPushButton:hover { background-color: #2c3e50; }");
     connect(m_navOrderManage, &QPushButton::clicked, this, [this] { switchPage(Page::OrderManage); });
     
-    m_navSystemSettings = new QPushButton(tr("⚙️ 系统设置"), sidebar);
-    m_navSystemSettings->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navSystemSettings, &QPushButton::clicked, this, [this] { switchPage(Page::SystemSettings); });
-    
     sidebarLayout->addWidget(btnDashboard);
     sidebarLayout->addWidget(m_navGearManage);
     sidebarLayout->addWidget(m_navUserManage);
     sidebarLayout->addWidget(m_navOrderManage);
-    sidebarLayout->addWidget(m_navSystemSettings);
     sidebarLayout->addStretch();
 
     // 右侧内容区
@@ -957,67 +964,3 @@ void AdminMainWindow::refreshOrderManageData()
     
     m_orderTable->resizeColumnsToContents();
 }
-
-QWidget* AdminMainWindow::createSystemSettingsPage()
-{
-    auto *page = new QWidget(this);
-    auto *mainLayout = new QHBoxLayout(page);
-    mainLayout->setContentsMargins(0, 0, 0, 0);
-    mainLayout->setSpacing(0);
-
-    // 左侧导航栏（复用）
-    auto *sidebar = new QWidget(page);
-    sidebar->setFixedWidth(200);
-    sidebar->setStyleSheet("QWidget { background-color: #34495e; }");
-    auto *sidebarLayout = new QVBoxLayout(sidebar);
-    sidebarLayout->setContentsMargins(0, 0, 0, 0);
-    sidebarLayout->setSpacing(0);
-    
-    auto *btnDashboard = new QPushButton(tr("📊 首页概览"), sidebar);
-    btnDashboard->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(btnDashboard, &QPushButton::clicked, this, [this] { switchPage(Page::Dashboard); });
-    
-    m_navGearManage = new QPushButton(tr("☂️ 雨具管理"), sidebar);
-    m_navGearManage->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navGearManage, &QPushButton::clicked, this, [this] { switchPage(Page::GearManage); });
-    
-    m_navUserManage = new QPushButton(tr("👤 用户管理"), sidebar);
-    m_navUserManage->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navUserManage, &QPushButton::clicked, this, [this] { switchPage(Page::UserManage); });
-    
-    m_navOrderManage = new QPushButton(tr("📋 订单/流水"), sidebar);
-    m_navOrderManage->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: transparent; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navOrderManage, &QPushButton::clicked, this, [this] { switchPage(Page::OrderManage); });
-    
-    m_navSystemSettings = new QPushButton(tr("⚙️ 系统设置"), sidebar);
-    m_navSystemSettings->setStyleSheet("QPushButton { text-align: left; padding: 15px 20px; font-size: 14px; color: white; border: none; background-color: #2c3e50; } QPushButton:hover { background-color: #2c3e50; }");
-    connect(m_navSystemSettings, &QPushButton::clicked, this, [this] { switchPage(Page::SystemSettings); });
-    
-    sidebarLayout->addWidget(btnDashboard);
-    sidebarLayout->addWidget(m_navGearManage);
-    sidebarLayout->addWidget(m_navUserManage);
-    sidebarLayout->addWidget(m_navOrderManage);
-    sidebarLayout->addWidget(m_navSystemSettings);
-    sidebarLayout->addStretch();
-
-    // 右侧内容区
-    auto *contentArea = new QWidget(page);
-    auto *contentLayout = new QVBoxLayout(contentArea);
-    contentLayout->setContentsMargins(20, 20, 20, 20);
-    contentLayout->setSpacing(16);
-
-    auto *title = new QLabel(tr("系统设置"), contentArea);
-    title->setStyleSheet("font-size:20px; font-weight:700; color: #2c3e50;");
-
-    auto *infoLabel = new QLabel(tr("系统设置功能待完善"), contentArea);
-    infoLabel->setStyleSheet("font-size:14px; color: #7f8c8d;");
-    contentLayout->addWidget(title);
-    contentLayout->addWidget(infoLabel);
-    contentLayout->addStretch();
-
-    mainLayout->addWidget(sidebar);
-    mainLayout->addWidget(contentArea, 1);
-
-    return page;
-}
-
