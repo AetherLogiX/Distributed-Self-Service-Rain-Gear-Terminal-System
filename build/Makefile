@@ -129,6 +129,19 @@ RainHub/fast:
 .PHONY : RainHub/fast
 
 #=============================================================================
+# Target rules for targets named RainHub_Admin
+
+# Build rule for target.
+RainHub_Admin: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 RainHub_Admin
+.PHONY : RainHub_Admin
+
+# fast build rule for target.
+RainHub_Admin/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/build
+.PHONY : RainHub_Admin/fast
+
+#=============================================================================
 # Target rules for targets named RainHub_autogen_timestamp_deps
 
 # Build rule for target.
@@ -154,12 +167,39 @@ RainHub_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_autogen.dir\build.make CMakeFiles/RainHub_autogen.dir/build
 .PHONY : RainHub_autogen/fast
 
+#=============================================================================
+# Target rules for targets named RainHub_Admin_autogen_timestamp_deps
+
+# Build rule for target.
+RainHub_Admin_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 RainHub_Admin_autogen_timestamp_deps
+.PHONY : RainHub_Admin_autogen_timestamp_deps
+
+# fast build rule for target.
+RainHub_Admin_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin_autogen_timestamp_deps.dir\build.make CMakeFiles/RainHub_Admin_autogen_timestamp_deps.dir/build
+.PHONY : RainHub_Admin_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named RainHub_Admin_autogen
+
+# Build rule for target.
+RainHub_Admin_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 RainHub_Admin_autogen
+.PHONY : RainHub_Admin_autogen
+
+# fast build rule for target.
+RainHub_Admin_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin_autogen.dir\build.make CMakeFiles/RainHub_Admin_autogen.dir/build
+.PHONY : RainHub_Admin_autogen/fast
+
 Control/DatabaseManager.obj: Control/DatabaseManager.cpp.obj
 .PHONY : Control/DatabaseManager.obj
 
 # target to build an object file
 Control/DatabaseManager.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Control/DatabaseManager.cpp.obj
 .PHONY : Control/DatabaseManager.cpp.obj
 
 Control/DatabaseManager.i: Control/DatabaseManager.cpp.i
@@ -168,6 +208,7 @@ Control/DatabaseManager.i: Control/DatabaseManager.cpp.i
 # target to preprocess a source file
 Control/DatabaseManager.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Control/DatabaseManager.cpp.i
 .PHONY : Control/DatabaseManager.cpp.i
 
 Control/DatabaseManager.s: Control/DatabaseManager.cpp.s
@@ -176,6 +217,7 @@ Control/DatabaseManager.s: Control/DatabaseManager.cpp.s
 # target to generate assembly for a file
 Control/DatabaseManager.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Control/DatabaseManager.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Control/DatabaseManager.cpp.s
 .PHONY : Control/DatabaseManager.cpp.s
 
 Control/SystemManger.obj: Control/SystemManger.cpp.obj
@@ -208,6 +250,7 @@ Model/StationUtils.obj: Model/StationUtils.cpp.obj
 # target to build an object file
 Model/StationUtils.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/StationUtils.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/StationUtils.cpp.obj
 .PHONY : Model/StationUtils.cpp.obj
 
 Model/StationUtils.i: Model/StationUtils.cpp.i
@@ -216,6 +259,7 @@ Model/StationUtils.i: Model/StationUtils.cpp.i
 # target to preprocess a source file
 Model/StationUtils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/StationUtils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/StationUtils.cpp.i
 .PHONY : Model/StationUtils.cpp.i
 
 Model/StationUtils.s: Model/StationUtils.cpp.s
@@ -224,6 +268,7 @@ Model/StationUtils.s: Model/StationUtils.cpp.s
 # target to generate assembly for a file
 Model/StationUtils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/StationUtils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/StationUtils.cpp.s
 .PHONY : Model/StationUtils.cpp.s
 
 Model/Stationlocal.obj: Model/Stationlocal.cpp.obj
@@ -232,6 +277,7 @@ Model/Stationlocal.obj: Model/Stationlocal.cpp.obj
 # target to build an object file
 Model/Stationlocal.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/Stationlocal.cpp.obj
 .PHONY : Model/Stationlocal.cpp.obj
 
 Model/Stationlocal.i: Model/Stationlocal.cpp.i
@@ -240,6 +286,7 @@ Model/Stationlocal.i: Model/Stationlocal.cpp.i
 # target to preprocess a source file
 Model/Stationlocal.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/Stationlocal.cpp.i
 .PHONY : Model/Stationlocal.cpp.i
 
 Model/Stationlocal.s: Model/Stationlocal.cpp.s
@@ -248,6 +295,7 @@ Model/Stationlocal.s: Model/Stationlocal.cpp.s
 # target to generate assembly for a file
 Model/Stationlocal.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/Stationlocal.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/Stationlocal.cpp.s
 .PHONY : Model/Stationlocal.cpp.s
 
 Model/User.obj: Model/User.cpp.obj
@@ -256,6 +304,7 @@ Model/User.obj: Model/User.cpp.obj
 # target to build an object file
 Model/User.cpp.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/User.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/User.cpp.obj
 .PHONY : Model/User.cpp.obj
 
 Model/User.i: Model/User.cpp.i
@@ -264,6 +313,7 @@ Model/User.i: Model/User.cpp.i
 # target to preprocess a source file
 Model/User.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/User.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/User.cpp.i
 .PHONY : Model/User.cpp.i
 
 Model/User.s: Model/User.cpp.s
@@ -272,7 +322,80 @@ Model/User.s: Model/User.cpp.s
 # target to generate assembly for a file
 Model/User.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/Model/User.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/Model/User.cpp.s
 .PHONY : Model/User.cpp.s
+
+RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.obj: RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj
+.PHONY : RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.obj
+
+# target to build an object file
+RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj
+.PHONY : RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj
+
+RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.i: RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.i
+.PHONY : RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.i
+
+# target to preprocess a source file
+RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.i
+.PHONY : RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.i
+
+RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.s: RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.s
+.PHONY : RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.s
+
+# target to generate assembly for a file
+RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.s
+.PHONY : RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.cpp.s
+
+RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.obj: RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.obj
+.PHONY : RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.obj
+
+# target to build an object file
+RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.obj
+.PHONY : RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.obj
+
+RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.i: RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.i
+.PHONY : RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.i
+
+# target to preprocess a source file
+RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.i
+.PHONY : RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.i
+
+RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.s: RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.s
+.PHONY : RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.s
+
+# target to generate assembly for a file
+RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.s
+.PHONY : RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.cpp.s
+
+RainHub_Admin_autogen/mocs_compilation.obj: RainHub_Admin_autogen/mocs_compilation.cpp.obj
+.PHONY : RainHub_Admin_autogen/mocs_compilation.obj
+
+# target to build an object file
+RainHub_Admin_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/mocs_compilation.cpp.obj
+.PHONY : RainHub_Admin_autogen/mocs_compilation.cpp.obj
+
+RainHub_Admin_autogen/mocs_compilation.i: RainHub_Admin_autogen/mocs_compilation.cpp.i
+.PHONY : RainHub_Admin_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+RainHub_Admin_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/mocs_compilation.cpp.i
+.PHONY : RainHub_Admin_autogen/mocs_compilation.cpp.i
+
+RainHub_Admin_autogen/mocs_compilation.s: RainHub_Admin_autogen/mocs_compilation.cpp.s
+.PHONY : RainHub_Admin_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+RainHub_Admin_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/RainHub_Admin_autogen/mocs_compilation.cpp.s
+.PHONY : RainHub_Admin_autogen/mocs_compilation.cpp.s
 
 RainHub_autogen/LFMT4ZCNZA/qrc_icons.obj: RainHub_autogen/LFMT4ZCNZA/qrc_icons.cpp.obj
 .PHONY : RainHub_autogen/LFMT4ZCNZA/qrc_icons.obj
@@ -345,6 +468,54 @@ RainHub_autogen/mocs_compilation.s: RainHub_autogen/mocs_compilation.cpp.s
 RainHub_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub.dir\build.make CMakeFiles/RainHub.dir/RainHub_autogen/mocs_compilation.cpp.s
 .PHONY : RainHub_autogen/mocs_compilation.cpp.s
+
+admin/AdminMainWindow.obj: admin/AdminMainWindow.cpp.obj
+.PHONY : admin/AdminMainWindow.obj
+
+# target to build an object file
+admin/AdminMainWindow.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/admin/AdminMainWindow.cpp.obj
+.PHONY : admin/AdminMainWindow.cpp.obj
+
+admin/AdminMainWindow.i: admin/AdminMainWindow.cpp.i
+.PHONY : admin/AdminMainWindow.i
+
+# target to preprocess a source file
+admin/AdminMainWindow.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/admin/AdminMainWindow.cpp.i
+.PHONY : admin/AdminMainWindow.cpp.i
+
+admin/AdminMainWindow.s: admin/AdminMainWindow.cpp.s
+.PHONY : admin/AdminMainWindow.s
+
+# target to generate assembly for a file
+admin/AdminMainWindow.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/admin/AdminMainWindow.cpp.s
+.PHONY : admin/AdminMainWindow.cpp.s
+
+admin/main.obj: admin/main.cpp.obj
+.PHONY : admin/main.obj
+
+# target to build an object file
+admin/main.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/admin/main.cpp.obj
+.PHONY : admin/main.cpp.obj
+
+admin/main.i: admin/main.cpp.i
+.PHONY : admin/main.i
+
+# target to preprocess a source file
+admin/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/admin/main.cpp.i
+.PHONY : admin/main.cpp.i
+
+admin/main.s: admin/main.cpp.s
+.PHONY : admin/main.s
+
+# target to generate assembly for a file
+admin/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\RainHub_Admin.dir\build.make CMakeFiles/RainHub_Admin.dir/admin/main.cpp.s
+.PHONY : admin/main.cpp.s
 
 client/MainWindow.obj: client/MainWindow.cpp.obj
 .PHONY : client/MainWindow.obj
@@ -426,9 +597,12 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... RainHub_Admin_autogen
+	@echo ... RainHub_Admin_autogen_timestamp_deps
 	@echo ... RainHub_autogen
 	@echo ... RainHub_autogen_timestamp_deps
 	@echo ... RainHub
+	@echo ... RainHub_Admin
 	@echo ... Control/DatabaseManager.obj
 	@echo ... Control/DatabaseManager.i
 	@echo ... Control/DatabaseManager.s
@@ -444,6 +618,15 @@ help:
 	@echo ... Model/User.obj
 	@echo ... Model/User.i
 	@echo ... Model/User.s
+	@echo ... RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.obj
+	@echo ... RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.i
+	@echo ... RainHub_Admin_autogen/LFMT4ZCNZA/qrc_icons.s
+	@echo ... RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.obj
+	@echo ... RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.i
+	@echo ... RainHub_Admin_autogen/UQEM7VAMAL/qrc_map.s
+	@echo ... RainHub_Admin_autogen/mocs_compilation.obj
+	@echo ... RainHub_Admin_autogen/mocs_compilation.i
+	@echo ... RainHub_Admin_autogen/mocs_compilation.s
 	@echo ... RainHub_autogen/LFMT4ZCNZA/qrc_icons.obj
 	@echo ... RainHub_autogen/LFMT4ZCNZA/qrc_icons.i
 	@echo ... RainHub_autogen/LFMT4ZCNZA/qrc_icons.s
@@ -453,6 +636,12 @@ help:
 	@echo ... RainHub_autogen/mocs_compilation.obj
 	@echo ... RainHub_autogen/mocs_compilation.i
 	@echo ... RainHub_autogen/mocs_compilation.s
+	@echo ... admin/AdminMainWindow.obj
+	@echo ... admin/AdminMainWindow.i
+	@echo ... admin/AdminMainWindow.s
+	@echo ... admin/main.obj
+	@echo ... admin/main.i
+	@echo ... admin/main.s
 	@echo ... client/MainWindow.obj
 	@echo ... client/MainWindow.i
 	@echo ... client/MainWindow.s
