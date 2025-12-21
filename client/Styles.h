@@ -500,3 +500,197 @@ namespace Buttons {
     }
 }
 
+//标签样式 
+namespace Labels {
+    //大标题
+    inline QString title() {
+        return QStringLiteral(R"(
+            font-size: 36px;
+            font-weight: 800;
+            color: #1a1a2e;
+            letter-spacing: -0.5px;
+        )");
+    }
+    
+    //页面标题
+    inline QString pageTitle() {
+        return QStringLiteral(R"(
+            font-size: 26px;
+            font-weight: 700;
+            color: #1a1a2e;
+        )");
+    }
+    
+    //副标题
+    inline QString subtitle() {
+        return QStringLiteral(R"(
+            font-size: 16px;
+            font-weight: 700;
+            color: #000000;
+            background: transparent;
+        )");
+    }
+    
+    //小提示文字（无背景）
+    inline QString hint() {
+        return QStringLiteral(R"(
+            font-size: 14px;
+            color: #8f8fa3;
+            background: transparent;
+        )");
+    }
+    
+    //表单标签
+    inline QString formLabel() {
+        return QStringLiteral(R"(
+            font-size: 14px;
+            font-weight: 600;
+            color: #4a4a68;
+        )");
+    }
+    
+    //余额显示（无背景）
+    inline QString balance() {
+        return QStringLiteral(R"(
+            font-size: 32px;
+            font-weight: 700;
+            color: #00d68f;
+            background: transparent;
+        )");
+    }
+    
+    //信息标签（无背景）
+    inline QString info() {
+        return QStringLiteral(R"(
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a2e;
+            background: transparent;
+            padding: 4px 0;
+        )");
+    }
+    
+    //欢迎页图标
+    inline QString welcomeIcon() {
+        return QStringLiteral(R"(
+            font-size: 72px;
+            color: #667eea;
+        )");
+    }
+    
+    //侧边栏标题（管理员后台）
+    inline QString sidebarTitle() {
+        return QStringLiteral(R"(
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            background: transparent;
+        )");
+    }
+    
+    //统计数字
+    inline QString statNumber() {
+        return QStringLiteral(R"(
+            font-size: 28px;
+            font-weight: 700;
+            color: #667eea;
+            background: transparent;
+        )");
+    }
+    
+    //统计标签
+    inline QString statLabel() {
+        return QStringLiteral(R"(
+            font-size: 13px;
+            font-weight: 500;
+            color: #8f8fa3;
+            background: transparent;
+        )");
+    }
+}
+
+//槽位卡片样式
+namespace SlotCard {
+    inline QString available() {
+        return QStringLiteral(R"(
+            SlotItem {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #ffffff, stop:1 #f8fff8);
+                border: 2px solid #00d68f;
+                border-radius: 16px;
+            }
+            SlotItem:hover {
+                border-color: #00f5a0;
+                background: #f0fff5;
+            }
+        )");
+    }
+    
+    inline QString empty() {
+        return QStringLiteral(R"(
+            SlotItem {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #ffffff, stop:1 #f5f5f5);
+                border: 2px solid #e4e9f2;
+                border-radius: 16px;
+            }
+            SlotItem:hover {
+                border-color: #bdc3c7;
+                background: #fafafa;
+            }
+        )");
+    }
+    
+    inline QString maintenance() {
+        return QStringLiteral(R"(
+            SlotItem {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #ffffff, stop:1 #fff5f5);
+                border: 2px solid #ff3d71;
+                border-radius: 16px;
+            }
+        )");
+    }
+    
+    inline QString selected() {
+        return QStringLiteral(R"(
+            SlotItem {
+                background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                    stop:0 #f8f5ff, stop:1 #f0ebff);
+                border: 3px solid #667eea;
+                border-radius: 16px;
+            }
+        )");
+    }
+}
+
+//地图容器样式 
+inline QString mapContainer() {
+    return QStringLiteral(R"(
+        background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+            stop:0 #e8f4f8, stop:0.5 #f0f7fa, stop:1 #e8f0f8);
+        border: 2px solid rgba(102, 126, 234, 0.2);
+        border-radius: 16px;
+    )");
+}
+
+//管理员后台侧边栏样式
+inline QString adminSidebar() {
+    return QStringLiteral(R"(
+        background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+            stop:0 #667eea, stop:1 #764ba2);
+        border-radius: 0px;
+    )");
+}
+
+//统计卡片样式
+inline QString statCard() {
+    return QStringLiteral(R"(
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: 16px;
+        border: 1px solid rgba(102, 126, 234, 0.15);
+    )");
+}
+
+} 
+
