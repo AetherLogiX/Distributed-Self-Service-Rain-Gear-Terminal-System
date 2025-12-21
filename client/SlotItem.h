@@ -1,3 +1,8 @@
+/*
+    主界面当中
+    借伞/还伞槽位GUI封装
+*/
+
 #pragma once
 
 #include <QWidget>
