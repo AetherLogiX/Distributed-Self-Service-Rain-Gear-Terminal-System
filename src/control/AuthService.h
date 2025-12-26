@@ -19,11 +19,11 @@ public:
         DatabaseError, //数据库连接失败
     };
     //登录检查,先判断账号密码是否合法
-    LoginStatus checkLogin(const QString& id, const QString& name) const;
+    LoginStatus checkLogin(const QString& id, const QString& name);
     //验证密码
-    bool verifyPassword(const QString& id, const QString& password) const;
+    bool verifyPassword(const QString& id, const QString& password);
     //激活账户并设置密码
-    void activateUser(const QString& id, const QString& password) const;
+    void activateUser(const QString& id, const QString& name, const QString& password);
 private:
     UserDao userDao;
 };
