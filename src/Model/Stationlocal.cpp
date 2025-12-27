@@ -59,7 +59,3 @@ void Stationlocal::mark_available(int index){
 void Stationlocal::set_online(bool online){
     this->online = online;
 } //设置站点在线状态
-
-bool Stationlocal::is_online() const{
-    return online;
-} //获取站点在线状态

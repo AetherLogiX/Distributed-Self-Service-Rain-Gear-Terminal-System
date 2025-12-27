@@ -28,7 +28,7 @@ public:
     QString get_name() const { return StationUtils::getChineseName(station); }
     double get_posX() const { return posX; }
     double get_posY() const { return posY; }
-    bool is_online() const { return online; }
+    bool get_online() const { return online; }
     //库存总数量与可用数量
     int get_inventory_count() const;
     int get_available_count() const;
