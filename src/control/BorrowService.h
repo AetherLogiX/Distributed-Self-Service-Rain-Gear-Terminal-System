@@ -9,7 +9,7 @@
 #include"../dao/UserDao.h"
 #include"../model/GlobalEnum.hpp"
 
-//给前端反馈借伞结果
+//给前端反馈借伞结果的结构体
 struct ServiceResult{
     bool success;
     QString message; //提示信息
