@@ -140,3 +140,55 @@ QMap<int, int> StationDao::selectStationInventoryCounts(QSqlDatabase& db) {
     
     return result;
 }
+
+
+
+//管理员后台Part
+//获取所有站点及其雨具统计
+QVector<StationStatsDTO> StationDao::selectAllWithStats(QSqlDatabase& db) {
+    QVector<StationStatsDTO> result;
+    
+    QSqlQuery stationQuery(db);
+    stationQuery.prepare(QStringLiteral("SELECT station_id, name, status FROM station ORDER BY station_id"));
+    if (!stationQuery.exec()) { return result; }
+    
+    while (stationQuery.next()) {
+        StationStatsDTO stats;
+        stats.stationId = stationQuery.value("station_id").toInt();
+        stats.name = stationQuery.value("name").toString();
+        stats.isOnline = stationQuery.value("status").toInt() == 1;
+        stats.totalGears = 0;
+        stats.availableCount = 0;
+        stats.borrowedCount = 0;
+        stats.brokenCount = 0;
+        
+        //查询该站点的雨具统计
+        QSqlQuery gearQuery(db);
+        gearQuery.prepare(QStringLiteral("SELECT status, COUNT(*) as cnt FROM raingear WHERE station_id = ? GROUP BY status"));
+        gearQuery.addBindValue(stats.stationId);
+        if (gearQuery.exec()) {
+            while (gearQuery.next()) {
+                int status = gearQuery.value("status").toInt();
+                int count = gearQuery.value("cnt").toInt();
+                stats.totalGears += count;
+                if (status == 1) stats.availableCount = count;
+                else if (status == 2) stats.borrowedCount = count;
+                else if (status == 3) stats.brokenCount = count;
+            }
+        }
+        result.append(stats);
+    }
+    return result;
+}
+
+//获取在线率
+double StationDao::getOnlineRate(QSqlDatabase& db) {
+    QSqlQuery query(db);
+    query.prepare(QStringLiteral("SELECT COUNT(*) as total, SUM(CASE WHEN status = 1 THEN 1 ELSE 0 END) as online FROM station"));
+    if (query.exec() && query.next()) {
+        int total = query.value("total").toInt();
+        int online = query.value("online").toInt();
+        if (total > 0) { return (online * 100.0) / total; }
+    }
+    return 0.0;
+}

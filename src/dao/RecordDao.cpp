@@ -50,3 +50,20 @@ bool RecordDao::updateReturnInfo(QSqlDatabase& db, qint64 recordId, double cost)
     }
     return true;
 }
+
+
+
+//管理员后台Part
+//获取最近订单
+QVector<OrderInfoDTO> RecordDao::selectRecent(QSqlDatabase& db, int limit) {
+    QVector<OrderInfoDTO> result;
+    QSqlQuery query(db);
+    query.prepare(QString("SELECT record_id, user_id, gear_id, borrow_time, return_time, cost FROM record ORDER BY borrow_time DESC LIMIT %1").arg(limit));
+    
+    if (!query.exec()) { return result; }
+    
+    while (query.next()) {
+        result.append(OrderInfoDTO{query.value("record_id").toLongLong(), query.value("user_id").toString(), query.value("gear_id").toString(), query.value("borrow_time").toDateTime(), query.value("return_time").toDateTime(), query.value("cost").toDouble()});
+    }
+    return result;
+}

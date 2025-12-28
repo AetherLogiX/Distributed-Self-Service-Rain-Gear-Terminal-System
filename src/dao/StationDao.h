@@ -2,12 +2,24 @@
 
 #include<QSqlDatabase>
 #include<QMap>
+#include<QVector>
 #include<vector>
 #include<optional>
 #include<memory>
 
 #include"../Model/Stationlocal.h"
 #include"../Model/GlobalEnum.hpp"
+
+// 站点统计信息DTO，管理员后台用
+struct StationStatsDTO {
+    int stationId;
+    QString name;
+    bool isOnline;
+    int totalGears;
+    int availableCount;
+    int borrowedCount;
+    int brokenCount;
+};
 
 class StationDao{
 public:
@@ -17,4 +29,8 @@ public:
     std::unique_ptr<Stationlocal> selectById(QSqlDatabase& db, Station station);
     //获取各站点的可用库存数量（用于地图显示）
     QMap<int, int> selectStationInventoryCounts(QSqlDatabase& db);
+    
+    //管理员Part
+    QVector<StationStatsDTO> selectAllWithStats(QSqlDatabase& db); //获取所有站点及其雨具统计
+    double getOnlineRate(QSqlDatabase& db); //获取在线率
 };
