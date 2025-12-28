@@ -63,7 +63,16 @@ QVector<OrderInfoDTO> RecordDao::selectRecent(QSqlDatabase& db, int limit) {
     if (!query.exec()) { return result; }
     
     while (query.next()) {
-        result.append(OrderInfoDTO{query.value("record_id").toLongLong(), query.value("user_id").toString(), query.value("gear_id").toString(), query.value("borrow_time").toDateTime(), query.value("return_time").toDateTime(), query.value("cost").toDouble()});
+        QString returnTime = query.value("return_time").isNull() ? QString() 
+            : query.value("return_time").toDateTime().toString("yyyy-MM-dd hh:mm:ss");
+        result.append(OrderInfoDTO{
+            query.value("record_id").toLongLong(), 
+            query.value("user_id").toString(), 
+            query.value("gear_id").toString(), 
+            query.value("borrow_time").toDateTime().toString("yyyy-MM-dd hh:mm:ss"), 
+            returnTime, 
+            query.value("cost").toDouble()
+        });
     }
     return result;
 }
