@@ -428,9 +428,10 @@ namespace Buttons {
                 background: transparent;
                 color: #667eea;
                 border: none;
-                padding: 8px 16px;
+                padding: 10px 16px;
                 font-size: 14px;
                 font-weight: 500;
+                min-height: 32px;
                 text-decoration: underline;
             }
             QPushButton:hover {

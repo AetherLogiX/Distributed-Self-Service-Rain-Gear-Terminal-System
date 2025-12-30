@@ -300,11 +300,11 @@ void LoginPage::setupUi()
 
     auto *card = new QWidget(this);
     card->setStyleSheet(Styles::pageContainer());
-    card->setFixedSize(480, 480);
+    card->setFixedSize(480, 550);
     
     auto *cardLayout = new QVBoxLayout(card);
     cardLayout->setAlignment(Qt::AlignCenter);
-    cardLayout->setSpacing(16);
+    cardLayout->setSpacing(12);
     cardLayout->setContentsMargins(50, 40, 50, 40);
 
     auto *title = new QLabel(tr("🔐 账号登录"), card);
@@ -325,10 +325,26 @@ void LoginPage::setupUi()
     btnLogin->setCursor(Qt::PointingHandCursor);
     connect(btnLogin, &QPushButton::clicked, this, &LoginPage::onLogin);
 
-    auto *btnReset = new QPushButton(tr("忘记密码？修改密码"), card);
-    btnReset->setStyleSheet(Styles::Buttons::link());
-    btnReset->setCursor(Qt::PointingHandCursor);
-    connect(btnReset, &QPushButton::clicked, this, &LoginPage::resetPassword);
+    // 忘记密码按钮
+    auto *btnForgot = new QPushButton(tr("忘记密码"), card);
+    btnForgot->setStyleSheet(Styles::Buttons::link());
+    btnForgot->setCursor(Qt::PointingHandCursor);
+    connect(btnForgot, &QPushButton::clicked, this, &LoginPage::onForgotPassword);
+
+    // 修改密码按钮
+    auto *btnChange = new QPushButton(tr("修改密码"), card);
+    btnChange->setStyleSheet(Styles::Buttons::link());
+    btnChange->setCursor(Qt::PointingHandCursor);
+    connect(btnChange, &QPushButton::clicked, this, &LoginPage::onChangePassword);
+
+    // 将忘记密码和修改密码放在同一行
+    auto *passwordLinksLayout = new QHBoxLayout();
+    passwordLinksLayout->setAlignment(Qt::AlignCenter);
+    passwordLinksLayout->setSpacing(16);
+    passwordLinksLayout->addWidget(btnForgot);
+    passwordLinksLayout->addWidget(btnChange);
+    auto *passwordLinksWidget = new QWidget(card);
+    passwordLinksWidget->setLayout(passwordLinksLayout);
 
     auto *btnBack = new QPushButton(tr("返回"), card);
     btnBack->setStyleSheet(Styles::Buttons::back());
@@ -342,8 +358,9 @@ void LoginPage::setupUi()
     cardLayout->addWidget(m_inputPass, 0, Qt::AlignCenter);
     cardLayout->addSpacing(20);
     cardLayout->addWidget(btnLogin, 0, Qt::AlignCenter);
-    cardLayout->addWidget(btnReset, 0, Qt::AlignCenter);
-    cardLayout->addSpacing(8);
+    cardLayout->addSpacing(12);
+    cardLayout->addWidget(passwordLinksWidget, 0, Qt::AlignCenter);
+    cardLayout->addSpacing(16);
     cardLayout->addWidget(btnBack, 0, Qt::AlignCenter);
 
     layout->addWidget(card, 0, Qt::AlignCenter);
@@ -401,6 +418,16 @@ void LoginPage::onLogin()
     } else {
         QMessageBox::critical(this, tr("错误"), tr("获取用户信息失败"));
     }
+}
+
+void LoginPage::onForgotPassword()
+{
+    QMessageBox::information(this, tr("忘记密码"), tr("请联系管理员进行密码重置。"));
+}
+
+void LoginPage::onChangePassword()
+{
+    emit changePassword();
 }
 
 //ResetPwdPage实现

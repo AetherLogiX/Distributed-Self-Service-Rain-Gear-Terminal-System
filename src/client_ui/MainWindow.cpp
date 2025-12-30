@@ -131,7 +131,7 @@ void MainWindow::setupConnections()
 
     // LoginPage 信号
     connect(m_loginPage, &LoginPage::loginSuccess, this, &MainWindow::onLoginSuccess);
-    connect(m_loginPage, &LoginPage::resetPassword, this, [this]() {
+    connect(m_loginPage, &LoginPage::changePassword, this, [this]() {
         m_resetPwdPage->setUserId(m_tempUserId, m_tempUserName);
         switchPage(Page::ResetPwd);
     });

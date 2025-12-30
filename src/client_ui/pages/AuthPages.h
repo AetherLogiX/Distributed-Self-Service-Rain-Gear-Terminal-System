@@ -81,12 +81,14 @@ public:
 
 signals:
     void loginSuccess(std::shared_ptr<User> user);  // 登录成功
-    void resetPassword();                            // 修改密码
+    void changePassword();                           // 修改密码
     void backClicked();
 
 private:
     void setupUi();
     void onLogin();
+    void onForgotPassword();  // 处理忘记密码点击
+    void onChangePassword();  // 处理修改密码点击
 
     AuthService *m_authService;
     QString m_userId;
