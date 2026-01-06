@@ -86,7 +86,7 @@ Rainhub/
    - 先运行 `init_db.sql`：会自动创建 `rainhub_db` 数据库及所有表结构。
    - 再运行 `data_insert.sql`：导入默认的站点和测试数据。
 
-2. 打开 `src/control/DatabaseManager.cpp`，修改连接配置：
+2. 打开 `src/utils/ConnectionPool.cpp`，修改连接配置（第18-19行）：
 
    ```c++
    db.setUserName("your_username"); // 替换为你的 MySQL 用户名

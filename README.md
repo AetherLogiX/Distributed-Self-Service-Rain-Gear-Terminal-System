@@ -84,7 +84,7 @@ Rainhub/
    - First, run `init_db.sql` to create the `rainhub_db` database and tables.
    - Then, run `data_insert.sql` to import default stations and test data.
 
-2. Open `src/control/DatabaseManager.cpp` and update the connection details:
+2. Open `src/utils/ConnectionPool.cpp` and update the connection details (lines 18-19):
 
    C++
 
