@@ -10,6 +10,7 @@ out/
 *.suo
 *.sln
 *.vcxproj*
+.cursorrules
 
 # Qt 生成文件
 moc_*.cpp
