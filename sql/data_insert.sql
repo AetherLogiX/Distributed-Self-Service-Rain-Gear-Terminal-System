@@ -14,6 +14,7 @@ insert into users (user_id, password, real_name, role, credit, is_active) values
 ('T001', null, 'teacher1', 1, 200.00, 0),
 ('T002', null, 'teacher2', 1, 200.00, 0),
 ('T003', null, 'teacher3', 1, 200.00, 0),
+('T004', null, 'teacher4', 1, 10.00, 0),
 ('admin', '123456', 'admin', 9, 9999.00, 1)
 on duplicate key update user_id=user_id;
 
