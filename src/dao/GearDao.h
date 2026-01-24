@@ -33,6 +33,7 @@ public:
     bool updateStatus(QSqlDatabase& db, const QString& id, int status); //仅更新状态
     
     //管理员后台Part
-    QVector<GearInfoDTO> selectAllDTO(QSqlDatabase& db, int stationId = 0, int slotId = 0); //获取雨具DTO列表
+    QVector<GearInfoDTO> selectAllDTO(QSqlDatabase& db, int stationId = 0, int slotId = 0, int limit = 0, int offset = 0); //获取雨具DTO列表（支持分页）
+    int countGears(QSqlDatabase& db, int stationId = 0, int slotId = 0); //统计雨具总数（用于分页）
     int countByStatus(QSqlDatabase& db, int status); //按状态统计数量
 };

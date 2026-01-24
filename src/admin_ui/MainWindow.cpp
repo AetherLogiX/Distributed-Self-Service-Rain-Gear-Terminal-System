@@ -394,6 +394,8 @@ QWidget* AdminMainWindow::createGearManagePage()
     connect(btnRefresh, &QPushButton::clicked, this, &AdminMainWindow::refreshGearManageData);
     connect(m_gearStationCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), 
             this, &AdminMainWindow::refreshGearManageData);
+    connect(m_gearSlotCombo, QOverload<int>::of(&QComboBox::currentIndexChanged), 
+            this, &AdminMainWindow::refreshGearManageData);
     
     filterLayout->addWidget(stationLabel);
     filterLayout->addWidget(m_gearStationCombo);
@@ -415,9 +417,44 @@ QWidget* AdminMainWindow::createGearManagePage()
     m_gearTable->setSelectionBehavior(QAbstractItemView::SelectRows);
     m_gearTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
+    // 分页控件
+    auto *paginationCard = new QWidget(contentArea);
+    paginationCard->setStyleSheet(Styles::statCard());
+    auto *paginationLayout = new QHBoxLayout(paginationCard);
+    paginationLayout->setContentsMargins(20, 12, 20, 12);
+    
+    m_gearPageInfo = new QLabel(tr("第 1 页，共 1 页"), paginationCard);
+    m_gearPageInfo->setStyleSheet(Styles::Labels::hint());
+    
+    m_gearPrevBtn = new QPushButton(tr("上一页"), paginationCard);
+    m_gearPrevBtn->setStyleSheet(Styles::Buttons::secondary());
+    m_gearPrevBtn->setCursor(Qt::PointingHandCursor);
+    m_gearPrevBtn->setEnabled(false);
+    connect(m_gearPrevBtn, &QPushButton::clicked, this, [this]() {
+        if (m_gearCurrentPage > 1) {
+            m_gearCurrentPage--;
+            refreshGearManageData();
+        }
+    });
+    
+    m_gearNextBtn = new QPushButton(tr("下一页"), paginationCard);
+    m_gearNextBtn->setStyleSheet(Styles::Buttons::secondary());
+    m_gearNextBtn->setCursor(Qt::PointingHandCursor);
+    connect(m_gearNextBtn, &QPushButton::clicked, this, [this]() {
+        m_gearCurrentPage++;
+        refreshGearManageData();
+    });
+    
+    paginationLayout->addWidget(m_gearPageInfo);
+    paginationLayout->addStretch();
+    paginationLayout->addWidget(m_gearPrevBtn);
+    paginationLayout->addSpacing(8);
+    paginationLayout->addWidget(m_gearNextBtn);
+
     contentLayout->addWidget(title);
     contentLayout->addWidget(filterCard);
     contentLayout->addWidget(m_gearTable, 1);
+    contentLayout->addWidget(paginationCard);
 
     mainLayout->addWidget(sidebar);
     mainLayout->addWidget(contentArea, 1);
@@ -651,10 +688,19 @@ void AdminMainWindow::refreshGearManageData()
 {
     if (!m_gearTable) return;
     
-    m_gearTable->setRowCount(0);
-    
+    // 筛选条件改变时重置到第一页
+    static int lastStationId = -1;
+    static int lastSlotId = -1;
     int selectedStationId = m_gearStationCombo ? m_gearStationCombo->currentData().toInt() : 0;
     int selectedSlotId = m_gearSlotCombo ? m_gearSlotCombo->currentData().toInt() : 0;
+    
+    if (selectedStationId != lastStationId || selectedSlotId != lastSlotId) {
+        m_gearCurrentPage = 1;
+        lastStationId = selectedStationId;
+        lastSlotId = selectedSlotId;
+    }
+    
+    m_gearTable->setRowCount(0);
     
     // 填充站点下拉框（只在第一次）
     if (m_gearStationCombo && m_gearStationCombo->count() == 1) {
@@ -664,7 +710,36 @@ void AdminMainWindow::refreshGearManageData()
         }
     }
     
-    auto gears = m_gearService->getAllGears(selectedStationId, selectedSlotId);
+    // 获取总数和当前页数据
+    int totalCount = m_gearService->getGearCount(selectedStationId, selectedSlotId);
+    int totalPages = (totalCount + GEAR_PAGE_SIZE - 1) / GEAR_PAGE_SIZE;  // 向上取整
+    if (totalPages == 0) totalPages = 1;  // 至少1页
+    
+    // 确保当前页不超出范围
+    if (m_gearCurrentPage > totalPages) {
+        m_gearCurrentPage = totalPages;
+    }
+    if (m_gearCurrentPage < 1) {
+        m_gearCurrentPage = 1;
+    }
+    
+    // 计算分页参数
+    int offset = (m_gearCurrentPage - 1) * GEAR_PAGE_SIZE;
+    auto gears = m_gearService->getAllGears(selectedStationId, selectedSlotId, GEAR_PAGE_SIZE, offset);
+    
+    // 更新分页信息
+    if (m_gearPageInfo) {
+        m_gearPageInfo->setText(tr("第 %1 页，共 %2 页（共 %3 条记录）")
+            .arg(m_gearCurrentPage).arg(totalPages).arg(totalCount));
+    }
+    
+    // 更新分页按钮状态
+    if (m_gearPrevBtn) {
+        m_gearPrevBtn->setEnabled(m_gearCurrentPage > 1);
+    }
+    if (m_gearNextBtn) {
+        m_gearNextBtn->setEnabled(m_gearCurrentPage < totalPages);
+    }
     
     QStringList typeNames = {tr("未知"), tr("普通塑料伞"), tr("高质量抗风伞"), tr("专用遮阳伞"), tr("雨衣")};
     QStringList statusNames = {tr("未知"), tr("可借"), tr("已借出"), tr("故障")};

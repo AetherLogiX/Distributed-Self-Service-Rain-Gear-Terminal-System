@@ -153,8 +153,8 @@ bool GearDao::updateStatus(QSqlDatabase& db, const QString& id, int status) {
 
 
 //管理员后台Part
-//获取雨具DTO列表
-QVector<GearInfoDTO> GearDao::selectAllDTO(QSqlDatabase& db, int stationId, int slotId) {
+//获取雨具DTO列表（支持分页）
+QVector<GearInfoDTO> GearDao::selectAllDTO(QSqlDatabase& db, int stationId, int slotId, int limit, int offset) {
     QVector<GearInfoDTO> result;
     QString sql = "SELECT gear_id, type_id, station_id, slot_id, status FROM raingear";
     QStringList conditions;
@@ -163,17 +163,58 @@ QVector<GearInfoDTO> GearDao::selectAllDTO(QSqlDatabase& db, int stationId, int 
     if (!conditions.isEmpty()) { sql += " WHERE " + conditions.join(" AND "); }
     sql += " ORDER BY gear_id";
     
+    // 添加分页限制
+    if (limit > 0) {
+        sql += " LIMIT :limit";
+        if (offset > 0) {
+            sql += " OFFSET :offset";
+        }
+    }
+    
+    QSqlQuery query(db);
+    query.prepare(sql);
+    if (stationId > 0) { query.bindValue(":station_id", stationId); }
+    if (slotId > 0) { query.bindValue(":slot_id", slotId); }
+    if (limit > 0) {
+        query.bindValue(":limit", limit);
+        if (offset > 0) {
+            query.bindValue(":offset", offset);
+        }
+    }
+    
+    if (!query.exec()) { 
+        qCritical() << "查询雨具列表失败:" << query.lastError().text();
+        return result; 
+    }
+    while (query.next()) {
+        result.append(GearInfoDTO{
+            query.value("gear_id").toString(),
+            query.value("type_id").toInt(),
+            query.value("station_id").toInt(),
+            query.value("slot_id").toInt(),
+            query.value("status").toInt()
+        });
+    }
+    return result;
+}
+
+//统计雨具总数（用于分页计算）
+int GearDao::countGears(QSqlDatabase& db, int stationId, int slotId) {
+    QString sql = "SELECT COUNT(*) FROM raingear";
+    QStringList conditions;
+    if (stationId > 0) { conditions.append("station_id = :station_id"); }
+    if (slotId > 0) { conditions.append("slot_id = :slot_id"); }
+    if (!conditions.isEmpty()) { sql += " WHERE " + conditions.join(" AND "); }
+    
     QSqlQuery query(db);
     query.prepare(sql);
     if (stationId > 0) { query.bindValue(":station_id", stationId); }
     if (slotId > 0) { query.bindValue(":slot_id", slotId); }
     
-    if (!query.exec()) { return result; }
-    while (query.next()) {
-        result.append(GearInfoDTO{query.value("gear_id").toString(),query.value("type_id").toInt(),query.value("station_id").toInt(),query.value("slot_id").toInt(),query.value("status").toInt()
-        });
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
     }
-    return result;
+    return 0;
 }
 
 //按状态统计数量

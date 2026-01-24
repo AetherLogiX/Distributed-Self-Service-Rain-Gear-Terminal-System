@@ -4,11 +4,18 @@
 #include "Admin_GearService.h"
 #include "../utils/ConnectionPool.h"
 
-//获取所有雨具
-QVector<GearInfoDTO> Admin_GearService::getAllGears(int stationId, int slotId) {
+//获取雨具列表（支持分页）
+QVector<GearInfoDTO> Admin_GearService::getAllGears(int stationId, int slotId, int limit, int offset) {
     QSqlDatabase db = ConnectionPool::getThreadLocalConnection();
     if (!db.isOpen()) return {};
-    return gearDao.selectAllDTO(db, stationId, slotId);
+    return gearDao.selectAllDTO(db, stationId, slotId, limit, offset);
+}
+
+//获取雨具总数（用于分页）
+int Admin_GearService::getGearCount(int stationId, int slotId) {
+    QSqlDatabase db = ConnectionPool::getThreadLocalConnection();
+    if (!db.isOpen()) return 0;
+    return gearDao.countGears(db, stationId, slotId);
 }
 
 //更新雨具状态

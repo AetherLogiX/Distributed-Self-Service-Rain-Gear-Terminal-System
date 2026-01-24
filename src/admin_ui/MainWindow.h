@@ -88,6 +88,11 @@ private:
     QComboBox *m_gearStationCombo { nullptr };
     QComboBox *m_gearSlotCombo { nullptr };
     QTableWidget *m_gearTable { nullptr };
+    QLabel *m_gearPageInfo { nullptr };  // 分页信息显示
+    QPushButton *m_gearPrevBtn { nullptr };  // 上一页按钮
+    QPushButton *m_gearNextBtn { nullptr };  // 下一页按钮
+    int m_gearCurrentPage { 1 };  // 当前页码
+    static constexpr int GEAR_PAGE_SIZE = 50;  // 每页显示数量
     
     // 用户管理页面
     QLineEdit *m_userSearchInput { nullptr };
