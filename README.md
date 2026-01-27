@@ -4,9 +4,11 @@
 
 > **"No more being trapped in buildings on rainy days."**
 
-### Introduction
+### Project Introduction
 
-**Campus RainHub** is an intelligent shared rain gear system designed for campus scenarios. It is an IoT solution developed with **C++17** and **Qt 6.9.3**, utilizing **MySQL 8.0** for underlying data storage.
+**Campus RainHub** aims to **reshape campus micro-mobility**. It is a shared rain gear service platform integrating intelligent user terminal interaction, real-time backend monitoring, and data visualization for decision-making.
+
+Developed using **C++17** and **Qt 6.9.3**, and relying on **MySQL 8.0** for underlying data storage, it is an IoT solution tailored specifically for campus scenarios.
 
 The project consists of two independent applications:
 
