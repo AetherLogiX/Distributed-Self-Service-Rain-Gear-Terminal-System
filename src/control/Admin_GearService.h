@@ -9,7 +9,7 @@
 
 class Admin_GearService {
 public:
-    // 获取雨具列表（支持分页）
+    // 获取雨具列表，分页查询
     QVector<GearInfoDTO> getAllGears(int stationId = 0, int slotId = 0, int limit = 0, int offset = 0);
     // 获取雨具总数（用于分页）
     int getGearCount(int stationId = 0, int slotId = 0);

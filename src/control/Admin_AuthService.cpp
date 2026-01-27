@@ -15,7 +15,6 @@ std::optional<User> Admin_AuthService::adminLogin(const QString& userId, const Q
     
     auto userOpt = userDao.selectById(db, userId);
     if (!userOpt) { return std::nullopt;  }
-    
     if (userOpt->get_password() != password) {return std::nullopt; } // 密码错误
     if (userOpt->get_role() != 9) {return std::nullopt; } // 不是管理员
     
