@@ -25,7 +25,7 @@ public:
     void set_station_id(Station station_id) { this->station_id = station_id; }
     void set_slot_id(int slot_id) { this->slot_id = slot_id; }
 
-    //纯虚接口：不同品类押金与图标不同。
+    // 纯虚接口：不同品类押金与图标不同。
     virtual double get_deposit() const = 0; // 获取押金金额
     virtual QString get_iconpath() const = 0; // 获取图标资源路径
 private:
