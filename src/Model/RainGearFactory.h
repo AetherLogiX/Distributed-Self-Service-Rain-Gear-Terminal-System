@@ -11,7 +11,7 @@
 
 class RainGearFactory {
 public:
-    //静态工厂方法，根据类型创建对应的雨具实例
+    // 静态工厂方法，根据类型创建对应的雨具实例
     static std::unique_ptr<RainGear> create_raingear(GearType type, const QString &id) {
         switch (type) {
             case GearType::StandardPlastic:

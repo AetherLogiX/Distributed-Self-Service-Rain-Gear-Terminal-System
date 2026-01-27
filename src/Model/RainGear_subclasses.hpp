@@ -1,5 +1,5 @@
 /*
-将所有继承基类的雨具子类定义都放在这个头文件中
+  将所有继承基类的雨具子类定义都放在这个头文件中
 */
 #pragma once
 
@@ -12,16 +12,16 @@ class PlasticUmbrella : public RainGear {
 public:
     PlasticUmbrella(QString id):RainGear(id,GearType::StandardPlastic) {}
 
-    double get_deposit() const override { return 10.00; } //普通塑料伞押金10元
+    double get_deposit() const override { return 10.00; } // 普通塑料伞押金10元
 
-    QString get_iconpath() const override { return ":/icons/plastic_unbrella.png"; } //返回图标路径
+    QString get_iconpath() const override { return ":/icons/plastic_unbrella.png"; } // 返回图标路径
 };
 
 // 2. 高质量抗风伞类
 class HighQualityUmbrella : public RainGear {
 public:
     HighQualityUmbrella(QString id):RainGear(id,GearType::PremiumWindproof) {}
-    double get_deposit() const override { return 20.00; } //高质量抗风伞押金20元
+    double get_deposit() const override { return 20.00; } // 高质量抗风伞押金20元
     QString get_iconpath() const override { return ":/icons/highquality_unbrella.png"; } 
 };
 

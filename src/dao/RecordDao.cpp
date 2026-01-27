@@ -15,7 +15,7 @@ bool RecordDao::addBorrowRecord(QSqlDatabase& db, const QString& userId, const Q
     QSqlQuery query(db);
 
     QDateTime borrowTime = QDateTime::currentDateTime();
-    QString borrowTimeStr = borrowTime.toString("yyyy-MM-dd hh:mm:ss"); //将得到的这个系统时间转换为字符串
+    QString borrowTimeStr = borrowTime.toString("yyyy-MM-dd hh:mm:ss"); // 将得到的这个系统时间转换为字符串
     
     query.prepare(QStringLiteral("INSERT INTO record (user_id, gear_id, borrow_time, cost) VALUES (?, ?, STR_TO_DATE(?, '%Y-%m-%d %H:%i:%s'), 0.0)"));
     query.addBindValue(userId);
