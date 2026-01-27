@@ -145,7 +145,7 @@ ServiceResult BorrowService::returnGear(const QString& userId, const QString& ge
     // 费用最多等于押金，不会倒扣用户余额
     if (cost > deposit) { cost = deposit;}
     
-    // 应退金额 = 押金 - 费用（最低为0）
+    // 应退金额 = 押金 - 费用
     double refund = deposit - cost;
     
     // 调试日志：输出计费详情
@@ -185,7 +185,7 @@ ServiceResult BorrowService::returnGear(const QString& userId, const QString& ge
 
 // 辅助函数：计费规则
 double BorrowService::calculateCost(const QDateTime& borrowTime, const QDateTime& returnTime, GearType type) {
-    //计算秒数差
+    // 计算秒数差
     qint64 seconds = borrowTime.secsTo(returnTime);
     
     // 如果时间差为负数或0，返回0（可能是时间异常）
